@@ -1,0 +1,24 @@
+name: Foo
+
+on:
+  push: {}
+jobs:
+
+  deploy:
+    name: Update Images
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Install skaffold & kustomize (if needed)
+        run: |
+          (command -v skaffold >&2) || (curl -Lo skaffold https://storage.googleapis.com/skaffold/releases/latest/skaffold-linux-amd64 && \
+            sudo install skaffold /usr/local/bin/)
+          (command -v kustomize >&2) || (curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash)
+
+      - name: Build
+        run: |
+          skaffold build --build-concurrency=0 --quiet -vtrace
