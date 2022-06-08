@@ -4,19 +4,19 @@ metadata:
   name: demo
 build:
   artifacts:
-    - image: baz
+    - image: ghcr.io/iamnoah/skaffold-tput-colors-bug/baz
       ko:
         main: ./foo
       hooks:
         before:
           - command: [go, mod, vendor]
-    - image: foo
+    - image: ghcr.io/iamnoah/skaffold-tput-colors-bug/foo
       docker:
         dockerfile: Dockerfile
       hooks:
         before:
           - command: [go, mod, vendor]
-    - image: bar
+    - image: ghcr.io/iamnoah/skaffold-tput-colors-bug/bar
       docker:
         dockerfile: Dockerfile
       hooks:
