@@ -10,18 +10,18 @@ build:
       hooks:
         before:
           - command: [go, mod, vendor]
-          - command: [sleep, "1"]
+          - command: [sleep, "3"]
     - image: ghcr.io/iamnoah/skaffold-tput-colors-bug/foo
       docker:
         dockerfile: Dockerfile
       hooks:
         before:
           - command: [go, mod, vendor]
-          - command: [sleep, "2"]
+          - command: [sleep, "3"]
     - image: ghcr.io/iamnoah/skaffold-tput-colors-bug/bar
       docker:
         dockerfile: Dockerfile
       hooks:
         before:
           - command: [go, mod, vendor]
-          - command: [sleep, "1"]
+          - command: [sleep, "3"]
