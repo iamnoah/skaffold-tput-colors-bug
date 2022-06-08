@@ -21,4 +21,4 @@ jobs:
 
       - name: Build
         run: |
-          skaffold build --build-concurrency=0 --quiet -vtrace
+          skaffold build --build-concurrency=0 --quiet -vtrace --push=false
